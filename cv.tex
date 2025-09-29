@@ -26,7 +26,7 @@
 %----------------------------------------------------------------------------------------
 
 % article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper, 10pt]{article}
 
 %----------------------------------------------------------------------------------------
 %	FONT
@@ -48,13 +48,22 @@
 %	PACKAGES
 %----------------------------------------------------------------------------------------
 \usepackage{url}
-\usepackage{parskip} 	
+\usepackage{parskip}
 
 %other packages for formatting
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[scale=0.9]{geometry}
+
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
 
 %tabularx environment
 \usepackage{tabularx}
@@ -94,33 +103,30 @@
 %for social icons
 \usepackage{fontawesome5}
 
+\usepackage{amsmath}
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    % \usepackage[T1]{fontenc} % this breaks sb2nov
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
 %debug page outer frames
 %\usepackage{showframe}
 
 
-% job listing environments
-\newenvironment{jobshort}[2]
-    {
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
-    \end{tabularx}
-    }
-    {
-    }
-
-\newenvironment{joblong}[2]
-    {
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
-    \end{tabularx}
-    \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
-    }
-    {
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0.10 cm
+    ]
+}{
     \end{itemize}
-    \end{minipage}    
-    }
-
+} % new environment for highlights
 
 
 %----------------------------------------------------------------------------------------
@@ -130,6 +136,8 @@
 
 % non-numbered pages
 \pagestyle{empty} 
+
+
 
 %----------------------------------------------------------------------------------------
 %	TITLE
@@ -142,55 +150,37 @@
 % \end{tabularx}
 
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Your Name} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\textbf{\fontsize{20 pt}{20 pt}\selectfont Irish Danielle "Ase" Morales} \\
+\vspace{0.1 cm}
+\href{https://github.com/asemorales}{\color{black}\raisebox{-0.05\height}\faGithub\ asemorales}\ \ $|$ \ 
+\href{https://linkedin.com/in/asemorales}{\color{black}\raisebox{-0.05\height}\faLinkedin\ asemorales} \ $|$ \ 
+\href{https://asemorales.github.io}{\color{black}\raisebox{-0.05\height}\faGlobe\ asemorales.github.io} \ $|$ \ 
+\href{mailto:asemorales.tech@gmail.com}{\color{black}\raisebox{-0.05\height}\faEnvelope\ asemorales.tech@gmail.com} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
 % EXPERIENCE SECTIONS
 %----------------------------------------------------------------------------------------
 
-%Interests/ Keywords/ Summary
-\section{Summary}
-This CV can also be automatically complied and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
-
-%Experience
-\section{Work Experience}
-
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
-
-
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
-\end{joblong}
-  
-%Projects
-\section{Projects}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
-\end{tabularx}
+% %Interests/ Keywords/ Summary
+% \section{Summary}
+% This CV can also be automatically complied and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
 
 %----------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 \section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
 
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
-
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Ateneo de Manila University} & \hfill \text{2024} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{BS Computer Science (Specialization in Data Science and Analytics)}
+    \begin{highlights}
+        \item Top program graduate based on academics and extracurriculars (Program Award)
+        \item GPA: 3.83/4.00, Director's List Scholar (Top 150 examinees), 100\% Financial Aid Scholar
+    \end{highlights}
+}
+\vspace{-10pt}
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -202,13 +192,177 @@ long long line of blah blah that will wrap when the table fills the column width
 \printbibliography[heading=none]
 \end{refsection}
 
+%Programs and Workshops
+\section{Programs and Workshops}
+
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+\textbf{Existential Risk Workshop} & & \text{Feb 2024} \\ [3.75pt]
+\textit{Global Challenges Project} & & \textit{Oxford, UK} \\ [3.75pt]
+\multicolumn{3}{@{}l@{}}{
+  \parbox{\linewidth}{
+    On biosecurity through preventing bio-engineered pandemics and AI safety through technology and policy
+  }
+} \\
+\end{tabularx}
+
+\vspace{8pt}
+
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+\textbf{In-Depth Effective Altruism – Moral Philosophy Track} & & \text{Mar 2024 - May 2024} \\[3.75pt]
+\textit{The Centre for Effective Altruism} & & \textit{Remote — Global} \\[3.75pt]
+\multicolumn{3}{@{}l@{}}{
+  \parbox{\linewidth}{
+    On AI alignment, including reinforcement learning from human feedback, interpretability, and scalable oversight
+  }
+} \\
+\end{tabularx}
+
+\vspace{8pt}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{In-Depth Effective Altruism – Moral Philosophy Track} & & \text{Jun 2021 -- Aug 2021} \\[3.75pt]
+\textit{The Centre for Effective Altruism} & & \textit{Remote — Global} \\[3.75pt]
+\multicolumn{3}{@{}l@{}}{
+  \parbox{\linewidth}{
+    On evidence-based ways to maximize social impact through an intersection of philosophy, policy, and technology
+  }
+} \\
+\end{tabularx}
+
+\vspace{8pt}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{Introduction to Effective Altruism} & & \text{Sep 2020 - Nov 2020} \\[3.75pt]
+\textit{Effective Altruism Blue} & & \textit{Remote - Metro Manila, PH} \\[3.75pt]
+\multicolumn{3}{@{}l@{}}{
+  \parbox{\linewidth}{
+    On frameworks for social impact across multiple fields: healthcare, philosophy, economics, rationality, etc.
+  }
+} \\
+\end{tabularx}
+
+%Experience
+\section{Professional Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Founding Developer} & \hfill \text{Apr 2025 - Jul 2025} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Tenext.ai}
+    \begin{highlights}
+        \item End-to-end development of an AI assistant that secured an RFP with the Philippines’ flag carrier airline
+        \item Completed SOC 2 and ISO 27001 compliance documentation within 2 weeks
+        \item Joined as the 5th engineer at an early-stage (1-month-old) startup
+    \end{highlights}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Full Stack Developer} & \hfill \text{Feb 2025 - Apr 2025} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{FYB Technologies}
+    \begin{highlights}
+        \item Developed backend of a finance module with complex revenue calculations, precision-safe accounting logic, wallet system, transaction ledger, and payment gateway integration in ~2 months
+        \item Joined as the 4th engineer of a product team at an early-stage (3-month-old) startup
+    \end{highlights}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Full Stack Developer} & \hfill \text{Jun 2023 - Dec 2024} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Hackazouk}
+    \begin{highlights}
+        \item Led development of a syncing mechanism for ~150 tables across 3 web apps using RESTful APIs for a finance system with 15,000+ users
+        \item Led a project with 5 developers, mentoring based on individual career goals; commended by team and senior management
+        \item Delivered an MVP in 10 days; surpassed KPIs and received high client praise
+        \item Delivered 9 projects, played a key role in securing a company merger, and was recognized for combining technical insights with business goals
+    \end{highlights}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Full Stack Developer (Contract)} & \hfill \text{Jun 2023 - Dec 2024} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Cloudband Solutions}
+    \begin{highlights}
+        \item Restructured a multi-repo app involving significant updates to API endpoints, unit tests, and UX
+        \item Designed 30+ wireframes \& revamped 4 SPAs for responsiveness, cross-browser support, and accessibility
+    \end{highlights}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Full Stack Developer/Research Assistant (Contract)} & \hfill \text{Jan 2023 - Jun 2023} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Ateneo Laboratory for the Learning Sciences}
+    \begin{highlights}
+        \item Solely developed a web analytics dashboard \& mobile app for research data collection
+        \item Co-authored a paper presented at ICCE 2024 on trends in student emotions through experience sampling
+    \end{highlights}
+}
+\end{tabularx}
+
+\section{Volunteering}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Mentor - Graph Neural Networks} & \hfill \text{Sep 2023 - Jan 2024} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Magnify Mentoring}
+    % \begin{highlights}
+    %     \item 8-week mentorship teaching graph neural networks as a tool to examine sociopolitical phenomena
+    % \end{highlights}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Mentor - Introduction to Programming} & \hfill \text{May 2023 - Jun 2023} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Ateneo Summer Programming Camp}
+    % \begin{highlights}
+    %     \item 2-week program teaching introductory Python to high school students from across the Philippines
+    % \end{highlights}
+}
+\end{tabularx}
+
+\section{Awards}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{University Scholarly Work Award} & \hfill \text{May 2025} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Ateneo de Manila University}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Program Award, BS Computer Science} & \hfill \text{May 2024} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Ateneo de Manila University}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Grand Prize Winner, Google Code-in} & \hfill \text{Jan 2019} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Google LLC \& Catrobat}
+}
+\end{tabularx}
+  
+%Projects
+% \section{Independent Projects}
+
+% \begin{tabularx}{\linewidth}{ @{}l r@{} }
+% \textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
+% \multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+% \end{tabularx}
+
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
 \section{Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+DS, ML, \& AI &  \normalsize{Python, PyTorch, Tableau, Natural language processing, Computer vision}\\
+Web Development  &  \normalsize{PHP, Laravel, TypeScript, React, Tailwind, UI/UX (Figma)}\\  
+Others  &  \normalsize{SQL, Git, Linux/Bash, Docker, Postman, NGINX, Test-driven development, CI/CD}\\ 
 \end{tabularx}
 
 \vfill
