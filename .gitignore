@@ -1,0 +1,19 @@
+# Core LaTeX build aux files
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Bibliography aux files (BibLaTeX/Biber)
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+
+# Build tool files (latexmk)
+*.fdb_latexmk
+*.fls
+
+# Final Output
+*.pdf
