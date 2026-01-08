@@ -88,7 +88,16 @@
 %CV Sections inspired by: 
 %http://stefano.italians.nl/archives/26
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
+\titlespacing{\section}{0pt}{1.5\baselineskip}{10pt}
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    % \usepackage[T1]{fontenc} % this breaks sb2nov
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
 
 %for publications
 \usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
@@ -100,29 +109,21 @@
 \addbibresource{citations.bib}
 \setlength\bibitemsep{1em}
 
-%for social icons
-\usepackage{fontawesome5}
+\usepackage{libertinus}
+\usepackage[T1]{fontenc}
 
 \usepackage{amsmath}
 
-% Ensure that generate pdf is machine readable/ATS parsable:
-\ifPDFTeX
-    \input{glyphtounicode}
-    \pdfgentounicode=1
-    % \usepackage[T1]{fontenc} % this breaks sb2nov
-    \usepackage[utf8]{inputenc}
-    \usepackage{lmodern}
-\fi
-
 %debug page outer frames
 %\usepackage{showframe}
-
 
 \newenvironment{highlights}{
     \begin{itemize}[
         topsep=0.10 cm,
         parsep=0.10 cm,
-        partopsep=0.10 cm
+        partopsep=0.10 cm,
+        leftmargin=1.2em,
+        after=\vspace{-\baselineskip}
     ]
 }{
     \end{itemize}
@@ -152,10 +153,9 @@
 \begin{tabularx}{\linewidth}{@{} C @{}}
 \textbf{\fontsize{20 pt}{20 pt}\selectfont Irish Danielle "Ase" Morales} \\
 \vspace{0.1 cm}
-\href{https://github.com/asemorales}{\color{black}\raisebox{-0.05\height}\faGithub\ asemorales}\ \ $|$ \ 
-\href{https://linkedin.com/in/asemorales}{\color{black}\raisebox{-0.05\height}\faLinkedin\ asemorales} \ $|$ \ 
-\href{https://asemorales.github.io}{\color{black}\raisebox{-0.05\height}\faGlobe\ asemorales.github.io} \ $|$ \ 
-\href{mailto:asemorales.tech@gmail.com}{\color{black}\raisebox{-0.05\height}\faEnvelope\ asemorales.tech@gmail.com} \\
+\href{https://asemorales.com}{\color{black}asemorales.com} \ $|$ \ 
+\href{https://github.com/asemorales}{\color{black}github.com/asemorales} \ $|$ \ 
+\href{mailto:asemorales.tech@gmail.com}{\color{black}asemorales.tech@gmail.com} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -177,8 +177,24 @@
     \textit{BS Computer Science (Specialization in Data Science and Analytics)}
     \begin{highlights}
         \item Top program graduate based on academics and extracurriculars (Program Award)
-        \item GPA: 3.83/4.00, Director's List Scholar (Top 150 examinees), 100\% Financial Aid Scholar
+        \item GPA: 3.83/4.00, Director's List Scholar (Top 1.5\% of applicants), 100\% Financial Aid Scholar
     \end{highlights}
+}
+\end{tabularx}
+
+\section{Awards}
+
+\begin{tabularx}{\linewidth}{ @{}X r@{} }
+\textbf{University Scholarly Work Award}, \textit{Ateneo de Manila University} & May 2025 \\ [3.75pt]
+\multicolumn{2}{@{}p{\linewidth}@{}}{
+    Awarded for international Scopus-indexed publication of undergraduate thesis
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}X r@{} }
+\textbf{Google Code-in Grand Prize Winner}, \textit{Google LLC} & Jan 2019 \\ [3.75pt]
+\multicolumn{2}{@{}p{\linewidth}@{}}{
+    1st Filipino winner; Awarded among 3,124 participants in 77 countries for excellence in open-source engineering
 }
 \end{tabularx}
 
@@ -186,81 +202,70 @@
 %	PUBLICATIONS
 %----------------------------------------------------------------------------------------
 \section{Publications}
-\begin{refsection}[citations.bib]
-\nocite{*}
-\printbibliography[heading=none]
-\end{refsection}
+\begin{itemize}[label={}, leftmargin=0in]
+    \item \textbf{I.D. Morales}, C.J. Echon, A.R. Tea\~{n}o, R. Alampay, P.A. Abu. (2024). ``MobileLookNet: A Lightweight Convolutional Neural Network for Detection of Osseous Metastasis Using Feature Fusion and Attention Strategies.'' \textit{Asia Conference on Computer Vision, Image Processing and Pattern Recognition}.
+    \item M.M. Rodrigo, L.P. Alampay, Q.N. Lee-Chua, \textbf{I.D. Morales}. (2024). ``An Experience Sampling Study of Student Emotional Life: Preliminary Results.'' \textit{International Conference on Computers in Education}.
+\end{itemize}
 
-%Programs and Workshops
-\section{Programs and Workshops}
+\section{Manuscripts in Progress}
+\begin{itemize}[label={}, leftmargin=0in]
+    \item \textbf{I.D. Morales}, A. Dayrit. ``Meta-learning in Spiking Neural Networks: A Survey.'' (\textit{In preparation}).
+\end{itemize}
 
-\begin{tabularx}{\linewidth}{ @{}l X r@{} }
-\textbf{Existential Risk Workshop} & & \text{Feb 2024} \\ [3.75pt]
-\textit{Global Challenges Project} & & \textit{Oxford, UK} \\ [3.75pt]
-\multicolumn{3}{@{}l@{}}{
-  \parbox{\linewidth}{
-    On biosecurity through preventing bio-engineered pandemics and AI safety through technology and policy
-  }
-} \\
-\end{tabularx}
-
-\vspace{8pt}
-
-\begin{tabularx}{\linewidth}{ @{}l X r@{} }
-\textbf{AI Safety Fundamentals - Technical Alignment Track} & & \text{Mar 2024 - May 2024} \\[3.75pt]
-\textit{BlueDot Impact} & & \textit{Remote — Global} \\[3.75pt]
-\multicolumn{3}{@{}l@{}}{
-  \parbox{\linewidth}{
-    On AI alignment, including reinforcement learning from human feedback, interpretability, and scalable oversight
-  }
-} \\
-\end{tabularx}
-
-\vspace{8pt}
-
-\begin{tabularx}{\linewidth}{@{}l X r@{}}
-\textbf{In-Depth Effective Altruism – Moral Philosophy Track} & & \text{Jun 2021 -- Aug 2021} \\[3.75pt]
-\textit{The Centre for Effective Altruism} & & \textit{Remote — Global} \\[3.75pt]
-\multicolumn{3}{@{}l@{}}{
-  \parbox{\linewidth}{
-    On evidence-based ways to maximize social impact through an intersection of philosophy, policy, and technology
-  }
-} \\
-\end{tabularx}
-
-\vspace{8pt}
-
-\begin{tabularx}{\linewidth}{@{}l X r@{}}
-\textbf{Introduction to Effective Altruism} & & \text{Sep 2020 - Nov 2020} \\[3.75pt]
-\textit{Effective Altruism Blue} & & \textit{Remote - Metro Manila, PH} \\[3.75pt]
-\multicolumn{3}{@{}l@{}}{
-  \parbox{\linewidth}{
-    On frameworks for social impact across multiple fields: healthcare, philosophy, economics, rationality, etc.
-  }
-} \\
-\end{tabularx}
-
-%Experience
-\section{Professional Experience}
+% Research Experience
+\section{Research Experience}
 
 \begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Independent Research Consultant} & \hfill \text{Jul 2025 - Dec 2025} \\ [3.75pt]
+\textbf{Research Assistant} & \hfill \text{Jan 2026 - May 2026} \\ [3.75pt]
 \multicolumn{2}{@{}X@{}}{
-    \textit{Cavite National Science High School}
+    \textit{Ateneo Laboratory for the Learning Sciences}
     \begin{highlights}
-        \item Guide development of research in sign language-to-text ML model and application logic
+        \item Developing a multimodal patient interview simulation platform with AI-driven dialogue (LLMs \& voice synthesis) to model and analyze patient-practitioner interaction dynamics for medical professional training
     \end{highlights}
 }
 \end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Research Assistant} & \hfill \text{Jan 2026 - Apr 2026} \\ [3.75pt]
+    \multicolumn{2}{@{}X@{}}{
+        \textit{Ateneo Laboratory for Intelligent Visual Environment}
+        \begin{highlights}
+            \item Developing a clinical decision support platform deploying medical imaging models (specialized YOLO, U-Net, \& CNN-based architectures) for medical professional training in bone scintigraphy analysis
+        \end{highlights}
+    }
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Research Consultant} & \hfill \text{Jul 2025 - Dec 2025} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Cavite National Science High School}
+    \begin{highlights}
+        \item Advised on the architectural design of a bidirectional Sign Language-to-Text translation system for mobile with spatiotemporal models optimized for on-device inference
+    \end{highlights}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Research Assistant} & \hfill \text{Jan 2023 - Jun 2023} \\ [3.75pt]
+\multicolumn{2}{@{}X@{}}{
+    \textit{Ateneo Laboratory for the Learning Sciences}
+    \begin{highlights}
+        \item Developed a cross-platform data acquisition pipeline and analytics dashboard for experience sampling
+        \item Co-authored a study published in Proceedings of ICCE 2024 on longitudinal analysis of affective trends in students
+    \end{highlights}
+}
+\end{tabularx}
+
+%Industry Experience
+\section{Industry Experience}
 
 \begin{tabularx}{\linewidth}{ @{}l r@{} }
 \textbf{Founding Developer} & \hfill \text{Apr 2025 - Jul 2025} \\ [3.75pt]
 \multicolumn{2}{@{}X@{}}{
     \textit{Tenext.ai}
     \begin{highlights}
-        \item End-to-end development of an AI assistant that secured an RFP with the Philippines’ flag carrier airline
-        \item Completed SOC 2 and ISO 27001 compliance documentation within 2 weeks
-        \item Joined as the 5th engineer at an early-stage (1-month-old) startup
+        \item Developed a real-time multimodal voice agent (STT $\to$ LLM $\to$ TTS) with retrieval-augmented generation; qualified for technical evaluation with the Philippines' flag carrier airline
+        \item Implemented SOC 2 \& ISO 27001 compliance standards for data protection across banking and healthcare clients
     \end{highlights}
 }
 \end{tabularx}
@@ -270,8 +275,8 @@
 \multicolumn{2}{@{}X@{}}{
     \textit{FYB Technologies}
     \begin{highlights}
-        \item Developed backend of a finance module with complex revenue calculations, precision-safe accounting logic, wallet system, transaction ledger, and payment gateway integration in ~2 months
-        \item Joined as the 4th engineer of a product team at an early-stage (3-month-old) startup
+        \item Developed a transaction ledger using fixed-point arithmetic to eliminate floating-point non-determinism
+        \item Engineered automated reconciliation for data consistency across wallet system and double-entry accounting ledger
     \end{highlights}
 }
 \end{tabularx}
@@ -281,79 +286,42 @@
 \multicolumn{2}{@{}X@{}}{
     \textit{Hackazouk}
     \begin{highlights}
-        \item Led development of a syncing mechanism for ~150 tables across 3 web apps using RESTful APIs for a finance system with 15,000+ users
-        \item Led a project with 5 developers, mentoring based on individual career goals; commended by team and senior management
-        \item Delivered an MVP in 10 days; surpassed KPIs and received high client praise
-        \item Delivered 9 projects, played a key role in securing a company merger, and was recognized for combining technical insights with business goals
+        \item Led development of distributed syncing engine for 150+ tables for microservice finance system with 15,000+ users
+        \item Fast-tracked from intern to developer within 2 months (vs. 6-month standard); entrusted with technical project leadership of a 5-developer team on a CCTV footage analysis platform
     \end{highlights}
 }
 \end{tabularx}
 
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Full Stack Developer (Contract)} & \hfill \text{Jun 2023 - Dec 2024} \\ [3.75pt]
-\multicolumn{2}{@{}X@{}}{
-    \textit{Cloudband Solutions}
-    \begin{highlights}
-        \item Restructured a multi-repo app involving significant updates to API endpoints, unit tests, and UX
-        \item Designed 30+ wireframes \& revamped 4 SPAs for responsiveness, cross-browser support, and accessibility
-    \end{highlights}
+\section{Teaching Experience}
+
+\begin{tabularx}{\linewidth}{ @{}X r@{} }
+\textbf{Technical Mentor (Graph Neural Networks)}, \textit{Magnify Mentoring} & \text{Sep 2023 - Jan 2024} \\ [3.75pt]
+\multicolumn{2}{@{}p{\linewidth}@{}}{
+    Taught theory and implementation of graph neural networks for analysis of sociopolitical voting behavior 
 }
 \end{tabularx}
 
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Full Stack Developer/Research Assistant (Contract)} & \hfill \text{Jan 2023 - Jun 2023} \\ [3.75pt]
-\multicolumn{2}{@{}X@{}}{
-    \textit{Ateneo Laboratory for the Learning Sciences}
-    \begin{highlights}
-        \item Solely developed a web analytics dashboard \& mobile app for research data collection
-        \item Co-authored a paper presented at ICCE 2024 on trends in student emotions through experience sampling
-    \end{highlights}
-}
+%Programs and Workshops
+\section{Programs and Workshops}
+
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+\textbf{Oxford Cohort: Existential Risk Workshop} & & \text{Feb 2024} \\ [3.75pt]
+\textit{Global Challenges Project} & & \textit{Oxford, UK} \\ [3.75pt]
+\multicolumn{3}{@{}l@{}}{
+  \parbox{\linewidth}{
+    Competitive ($\sim$30 students accepted globally) and intensive workshops on technical AI safety and biosecurity research
+  }
+} \\
 \end{tabularx}
 
-\section{Volunteering}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Mentor - Graph Neural Networks} & \hfill \text{Sep 2023 - Jan 2024} \\ [3.75pt]
-\multicolumn{2}{@{}X@{}}{
-    \textit{Magnify Mentoring}
-    % \begin{highlights}
-    %     \item 8-week mentorship teaching graph neural networks as a tool to examine sociopolitical phenomena
-    % \end{highlights}
-}
-\end{tabularx}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Mentor - Introduction to Programming} & \hfill \text{May 2023 - Jun 2023} \\ [3.75pt]
-\multicolumn{2}{@{}X@{}}{
-    \textit{Ateneo Summer Programming Camp}
-    % \begin{highlights}
-    %     \item 2-week program teaching introductory Python to high school students from across the Philippines
-    % \end{highlights}
-}
-\end{tabularx}
-
-\section{Awards}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{University Scholarly Work Award} & \hfill \text{May 2025} \\ [3.75pt]
-\multicolumn{2}{@{}X@{}}{
-    \textit{Ateneo de Manila University}
-}
-\end{tabularx}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Program Award, BS Computer Science} & \hfill \text{May 2024} \\ [3.75pt]
-\multicolumn{2}{@{}X@{}}{
-    \textit{Ateneo de Manila University}
-}
-\end{tabularx}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Grand Prize Winner, Google Code-in} & \hfill \text{Jan 2019} \\ [3.75pt]
-\multicolumn{2}{@{}X@{}}{
-    \textit{Google LLC \& Catrobat}
-}
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+\textbf{Technical Alignment: AI Safety Fundamentals} & & \text{Mar 2024 - May 2024} \\[3.75pt]
+\textit{BlueDot Impact} & & \textit{Remote — Global} \\ [3.75pt]
+\multicolumn{3}{@{}l@{}}{
+  \parbox{\linewidth}{
+    On AI alignment, including reinforcement learning from human feedback, interpretability, and scalable oversight
+  }
+} \\
 \end{tabularx}
   
 %Projects
@@ -369,9 +337,9 @@
 %----------------------------------------------------------------------------------------
 \section{Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-DS, ML, \& AI &  \normalsize{Python, PyTorch, Tableau, Natural language processing, Computer vision}\\
-Web Development  &  \normalsize{PHP, Laravel, TypeScript, React, Tailwind, UI/UX (Figma)}\\  
-Others  &  \normalsize{SQL, Git, Linux/Bash, Docker, Postman, NGINX, Test-driven development, CI/CD}\\ 
+Languages &  \normalsize{Python, C++, TypeScript, SQL, LaTeX}\\
+Machine Learning &  \normalsize{PyTorch, Scikit-learn, Matplotlib, GNNs, CNNs, LLMs, RAG, STT, TTS}\\
+Tools  &  \normalsize{Git, Linux/Bash, Docker, Postman, AWS, Nginx, GitHub Actions}\\ 
 \end{tabularx}
 
 \vfill
